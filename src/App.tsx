@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { theme } = useStore();
+  const { theme, isAdminOpen, selectedProject } = useStore();
 
   useEffect(() => {
     // Synchronize HTML class with store theme
@@ -37,6 +37,18 @@ export const App: React.FC = () => {
       document.documentElement.classList.add('light');
     }
   }, [theme]);
+
+  useEffect(() => {
+    // Prevent background scrolling when a modal overlay is open
+    if (isAdminOpen || selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isAdminOpen, selectedProject]);
 
   useEffect(() => {
     // Initialize Lenis Smooth Scroll

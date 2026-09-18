@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
           {/* Social & Back to Top */}
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com/gayan-tharaka"
+              href="https://github.com/gayanfadna-spec"
               target="_blank"
               rel="noreferrer"
               title="GitHub Profile"

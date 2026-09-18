@@ -132,7 +132,7 @@ export const AdminModal: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6 select-none">
+      <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6" data-lenis-prevent>
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -147,12 +147,13 @@ export const AdminModal: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-panel bg-dark-900 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl"
+          data-lenis-prevent
+          className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar glass-panel bg-dark-900 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl"
         >
           {/* Close button */}
           <button
             onClick={() => setIsAdminOpen(false)}
-            className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/10 transition-colors"
+            className="absolute top-6 right-6 z-30 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/10 transition-colors"
           >
             <X size={20} />
           </button>
@@ -217,76 +218,78 @@ export const AdminModal: React.FC = () => {
           ) : (
             /* Logged-In Admin Panel */
             <div>
-              {/* Header */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                    <Shield size={20} />
+              {/* Sticky Header & Tabs */}
+              <div className="sticky -top-6 sm:-top-8 -mx-6 sm:-mx-8 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-dark-900/95 backdrop-blur-md z-20 border-b border-white/10 mb-6">
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                      <Shield size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                        <span>Admin Control Center</span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                          {adminUser?.role || 'Superadmin'}
+                        </span>
+                      </h3>
+                      <p className="text-xs text-slate-400">Logged in as {adminUser?.username}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                      <span>Admin Control Center</span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                        {adminUser?.role || 'Superadmin'}
-                      </span>
-                    </h3>
-                    <p className="text-xs text-slate-400">Logged in as {adminUser?.username}</p>
+
+                  <div className="flex items-center gap-2 pr-12">
+                    <button
+                      onClick={loadAdminData}
+                      className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-colors"
+                      title="Refresh Data"
+                    >
+                      <RefreshCw size={16} className={loadingData ? 'animate-spin' : ''} />
+                    </button>
+                    <button
+                      onClick={logoutAdmin}
+                      className="px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <LogOut size={14} />
+                      <span>Logout</span>
+                    </button>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                {/* Navigation Tabs */}
+                <div className="flex items-center gap-2 pt-4">
                   <button
-                    onClick={loadAdminData}
-                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-colors"
-                    title="Refresh Data"
+                    onClick={() => setActiveTab('inbox')}
+                    className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+                      activeTab === 'inbox'
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
                   >
-                    <RefreshCw size={16} className={loadingData ? 'animate-spin' : ''} />
+                    <Mail size={15} />
+                    <span>Inquiries Inbox ({messages.length})</span>
                   </button>
                   <button
-                    onClick={logoutAdmin}
-                    className="px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    onClick={() => setActiveTab('projects')}
+                    className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+                      activeTab === 'projects'
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
                   >
-                    <LogOut size={14} />
-                    <span>Logout</span>
+                    <FolderKanban size={15} />
+                    <span>Manage Projects ({projects.length})</span>
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('new-project')}
+                    className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+                      activeTab === 'new-project'
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    <Plus size={15} />
+                    <span>Publish New Project</span>
                   </button>
                 </div>
-              </div>
-
-              {/* Navigation Tabs */}
-              <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-4">
-                <button
-                  onClick={() => setActiveTab('inbox')}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                    activeTab === 'inbox'
-                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <Mail size={15} />
-                  <span>Inquiries Inbox ({messages.length})</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab('projects')}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                    activeTab === 'projects'
-                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <FolderKanban size={15} />
-                  <span>Manage Projects ({projects.length})</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab('new-project')}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                    activeTab === 'new-project'
-                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/40'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <Plus size={15} />
-                  <span>Publish New Project</span>
-                </button>
               </div>
 
               {/* Tab 1: Inbox */}

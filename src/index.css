@@ -132,4 +132,26 @@
     background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
     background-size: 24px 24px;
   }
+
+  /* Custom scrollbar utility for modals and scroll panels */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 242, 254, 0.4) rgba(255, 255, 255, 0.04);
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 242, 254, 0.35);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 242, 254, 0.65);
+  }
 }
+

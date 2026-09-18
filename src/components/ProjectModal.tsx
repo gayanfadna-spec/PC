@@ -10,7 +10,7 @@ export const ProjectModal: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[9990] flex items-center justify-center p-4 sm:p-6 select-none">
+      <div className="fixed inset-0 z-[9990] flex items-center justify-center p-4 sm:p-6" data-lenis-prevent>
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -26,12 +26,13 @@ export const ProjectModal: React.FC = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-panel bg-dark-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl"
+          data-lenis-prevent
+          className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar glass-panel bg-dark-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl"
         >
           {/* Close button */}
           <button
             onClick={() => setSelectedProject(null)}
-            className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/10 transition-colors"
+            className="absolute top-6 right-6 z-30 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/10 transition-colors"
           >
             <X size={20} />
           </button>
