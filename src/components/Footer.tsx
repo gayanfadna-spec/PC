@@ -12,11 +12,13 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1px] shadow-glow-cyan">
-                <div className="w-full h-full bg-dark-950 rounded-[11px] flex items-center justify-center font-display font-black text-xs text-cyan-400">
-                  GT
-                </div>
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1.5px] shadow-glow-cyan overflow-hidden">
+                <img
+                  src="/images/gayan-avatar.jpg"
+                  alt="GT"
+                  className="w-full h-full object-cover object-top rounded-[10px]"
+                />
               </div>
               <span className="font-display font-black text-lg text-white">Gayan Tharaka</span>
             </div>

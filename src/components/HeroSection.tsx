@@ -38,6 +38,31 @@ export const HeroSection: React.FC = () => {
           </span>
         </motion.div>
 
+        {/* Hero Portrait Avatar */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="relative mb-6 group cursor-pointer"
+          onClick={() => scrollTo('about')}
+          title="About Gayan Tharaka"
+        >
+          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-cyan-300 p-[2.5px] shadow-[0_0_40px_rgba(0,242,254,0.35)] transition-transform duration-500 group-hover:scale-105">
+            <div className="w-full h-full rounded-[22px] overflow-hidden bg-dark-950">
+              <img
+                src="/images/gayan-avatar.jpg"
+                alt="Gayan Tharaka"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                loading="eager"
+              />
+            </div>
+          </div>
+          <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-dark-950 text-[9px] font-bold px-2 py-0.5 rounded-full border-2 border-dark-950 flex items-center gap-1 shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-dark-950 animate-ping" />
+            <span>HIRE ME</span>
+          </div>
+        </motion.div>
+
         {/* Hero Name Heading */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.95, y: 20 }}

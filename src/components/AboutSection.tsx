@@ -27,19 +27,26 @@ export const AboutSection: React.FC = () => {
               {/* Background gradient blob */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-cyan-500/20 to-indigo-600/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
 
-              {/* Profile Avatar Graphic */}
+              {/* Profile Portrait Graphic */}
               <div className="relative mb-6">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-3xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-500 p-[2px] shadow-glow-cyan">
-                  <div className="w-full h-full rounded-[22px] bg-dark-950 flex flex-col items-center justify-center text-center p-3 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent pointer-events-none" />
-                    <span className="font-display font-black text-4xl text-gradient-cyan tracking-wider">
-                      GT
-                    </span>
-                    <span className="text-[10px] text-cyan-400/80 font-mono mt-1">ENGINEER</span>
+                <div className="w-40 h-52 sm:w-48 sm:h-60 mx-auto rounded-3xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-500 p-[2px] shadow-glow-cyan group/avatar overflow-hidden">
+                  <div className="w-full h-full rounded-[22px] overflow-hidden relative bg-dark-950">
+                    <img
+                      src="/images/gayan-portrait.jpg"
+                      alt="Gayan Tharaka - Sabaragamuwa University of Sri Lanka"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/avatar:scale-105"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2.5 inset-x-0 text-center pointer-events-none">
+                      <span className="text-[10px] font-mono font-semibold tracking-wider text-cyan-300 uppercase px-2.5 py-0.5 rounded-full bg-dark-950/85 backdrop-blur-md border border-cyan-400/30">
+                        Sabaragamuwa CS Graduate
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 right-1/2 translate-x-12 translate-y-2 bg-emerald-500 text-dark-950 text-[10px] font-bold px-2.5 py-0.5 rounded-full border-2 border-dark-950 flex items-center gap-1 shadow-lg">
+                <div className="absolute bottom-0 right-1/2 translate-x-16 sm:translate-x-20 translate-y-2 bg-emerald-500 text-dark-950 text-[10px] font-bold px-2.5 py-0.5 rounded-full border-2 border-dark-950 flex items-center gap-1 shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-dark-950 animate-ping" />
                   <span>ONLINE</span>
                 </div>

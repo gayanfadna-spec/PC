@@ -60,12 +60,14 @@ export const Navbar: React.FC = () => {
             <a
               href="#hero"
               onClick={(e) => scrollToSection(e, '#hero')}
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2.5 group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1px] shadow-glow-cyan transition-transform duration-300 group-hover:scale-105">
-                <div className="w-full h-full bg-dark-950 rounded-[11px] flex items-center justify-center font-display font-black text-sm text-cyan-400">
-                  GT
-                </div>
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1.5px] shadow-glow-cyan transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+                <img
+                  src="/images/gayan-avatar.jpg"
+                  alt="Gayan Tharaka"
+                  className="w-full h-full object-cover object-top rounded-[10px]"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-sm tracking-tight text-slate-100 group-hover:text-cyan-400 transition-colors">
