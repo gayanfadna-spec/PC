@@ -1,6 +1,10 @@
 import { IProject, ISkill, IStats, IMessage } from '../types/index.js';
 
-const API_BASE = '/api';
+const API_ROOT = import.meta.env.VITE_API_URL
+  ? (import.meta.env.VITE_API_URL as string).replace(/\/+$/, '')
+  : '';
+
+const API_BASE = `${API_ROOT}/api`;
 
 export const api = {
   async getProjects(): Promise<IProject[]> {
