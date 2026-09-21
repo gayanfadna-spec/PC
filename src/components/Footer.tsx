@@ -48,8 +48,10 @@ export const Footer: React.FC = () => {
               <Github size={16} />
             </a>
             <a
-              href="mailto:gayanfadna@gmail.com"
-              title="Email Gayan"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=gayanfadna@gmail.com&su=Project%20Inquiry%20%7C%20Gayan%20Tharaka"
+              target="_blank"
+              rel="noreferrer"
+              title="Send via Gmail"
               className="p-2.5 rounded-xl glass-panel border border-white/10 text-slate-300 hover:text-cyan-400 transition-colors"
             >
               <Mail size={16} />

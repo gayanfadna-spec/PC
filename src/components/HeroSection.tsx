@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Code2, Database, Gamepad2, MapPin, Sparkles, Send, FileText, Download, Github } from 'lucide-react';
+import { ArrowDown, Code2, Database, Gamepad2, MapPin, Sparkles, Send, Download, Github, Mail } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -131,11 +131,14 @@ export const HeroSection: React.FC = () => {
           </button>
 
           <a
-            href="mailto:gayanfadna@gmail.com"
-            className="w-full sm:w-auto px-6 py-4 rounded-2xl glass-panel border border-white/10 text-slate-400 hover:text-slate-200 font-medium text-xs flex items-center justify-center gap-2 transition-all hover:bg-white/5"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=gayanfadna@gmail.com&su=Project%20Inquiry%20%7C%20Gayan%20Tharaka"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full sm:w-auto px-6 py-4 rounded-2xl glass-panel border border-white/10 text-slate-400 hover:text-white font-medium text-xs flex items-center justify-center gap-2 transition-all hover:bg-white/5 group"
+            title="Open in Gmail"
           >
-            <FileText size={16} />
-            <span>Direct Email</span>
+            <Mail size={16} className="text-slate-400 group-hover:text-cyan-400 transition-colors" />
+            <span>Send Gmail</span>
           </a>
 
           <a

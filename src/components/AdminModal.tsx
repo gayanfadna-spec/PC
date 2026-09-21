@@ -330,8 +330,11 @@ export const AdminModal: React.FC = () => {
                                 </button>
                               )}
                               <a
-                                href={`mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`}
+                                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(msg.email)}&su=Re:%20${encodeURIComponent(msg.subject)}`}
+                                target="_blank"
+                                rel="noreferrer"
                                 className="px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 text-xs font-medium transition-colors"
+                                title="Reply via Gmail"
                               >
                                 Reply
                               </a>

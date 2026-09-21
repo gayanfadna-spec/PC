@@ -96,8 +96,11 @@ export const ContactSection: React.FC = () => {
                       Email Address
                     </span>
                     <a
-                      href="mailto:gayanfadna@gmail.com"
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=gayanfadna@gmail.com&su=Project%20Inquiry%20%7C%20Gayan%20Tharaka"
+                      target="_blank"
+                      rel="noreferrer"
                       className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors"
+                      title="Send via Gmail"
                     >
                       gayanfadna@gmail.com
                     </a>

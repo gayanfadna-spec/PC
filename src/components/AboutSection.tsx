@@ -65,8 +65,11 @@ export const AboutSection: React.FC = () => {
               {/* Quick Contacts inside Card */}
               <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs">
                 <a
-                  href="mailto:gayanfadna@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=gayanfadna@gmail.com&su=Project%20Inquiry%20%7C%20Gayan%20Tharaka"
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                  title="Send via Gmail"
                 >
                   <Mail size={15} className="text-cyan-400" />
                   <span className="truncate">gayanfadna@gmail.com</span>
