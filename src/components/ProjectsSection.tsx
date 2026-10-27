@@ -182,7 +182,7 @@ export const ProjectsSection: React.FC = () => {
   const filteredProjects = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 relative select-none">
+    <section id="projects" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14">

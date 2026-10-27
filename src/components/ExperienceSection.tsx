@@ -43,7 +43,7 @@ export const ExperienceSection: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 relative select-none">
+    <section id="experience" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">

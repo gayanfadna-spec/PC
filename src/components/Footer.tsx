@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 bg-dark-950/80 select-none">
+    <footer className="relative border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 bg-dark-950/80">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-white/10">
           {/* Brand */}

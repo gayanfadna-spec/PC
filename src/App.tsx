@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Helmet } from 'react-helmet-async';
@@ -42,27 +43,54 @@ export const App: React.FC = () => {
     // Prevent background scrolling when a modal overlay is open
     if (isAdminOpen || selectedProject) {
       document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     };
   }, [isAdminOpen, selectedProject]);
 
   useEffect(() => {
-    // Initialize Lenis Smooth Scroll
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-
-    lenis.on('scroll', () => {
-      ScrollTrigger.update();
+    const handleProgress = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
         setScrollProgress((window.scrollY / totalScroll) * 100);
       }
+    };
+
+    // Detect touch / mobile devices
+    const isTouchDevice =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches;
+
+    if (isTouchDevice) {
+      // Use buttery-smooth native momentum scrolling on mobile devices
+      const onScroll = () => {
+        ScrollTrigger.update();
+        handleProgress();
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => {
+        window.removeEventListener('scroll', onScroll);
+      };
+    }
+
+    // Initialize Lenis Smooth Scroll on desktop (fine pointer devices)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      syncTouch: false,
+    });
+
+    lenis.on('scroll', () => {
+      ScrollTrigger.update();
+      handleProgress();
     });
 
     const updateTicker = (time: number) => {
@@ -79,7 +107,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className={`relative min-h-screen overflow-x-hidden ${theme === 'dark' ? 'dark bg-dark-950' : 'light bg-slate-50'}`}>
+    <div className={`relative min-h-screen ${theme === 'dark' ? 'dark bg-dark-950' : 'light bg-slate-50'}`}>
       <Helmet>
         <title>Gayan Tharaka — Web Developer & MERN Stack Architect</title>
         <meta

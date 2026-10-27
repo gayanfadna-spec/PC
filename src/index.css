@@ -19,14 +19,20 @@
     --accent-indigo: #4f46e5;
   }
 
-  html, body {
-    overflow-x: hidden;
+  html {
+    overflow-x: clip;
+    scroll-behavior: smooth;
   }
 
   body {
     background-color: var(--bg-primary);
     color: #f1f5f9;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: clip;
+    width: 100%;
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   .light body {

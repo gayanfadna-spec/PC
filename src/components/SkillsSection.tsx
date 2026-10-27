@@ -71,7 +71,7 @@ export const SkillsSection: React.FC = () => {
   const categories = ['All', 'Frontend', 'Backend & DB', 'Game Dev & Languages', 'Tools & DevOps'] as const;
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 relative select-none">
+    <section id="skills" className="py-24 px-4 sm:px-6 relative">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[180px] pointer-events-none" />
 

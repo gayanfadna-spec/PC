@@ -57,7 +57,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 relative select-none">
+    <section id="contact" className="py-24 px-4 sm:px-6 relative">
       {/* Background radial glow */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-cyan-500/5 rounded-full blur-[190px] pointer-events-none" />
 

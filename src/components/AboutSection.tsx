@@ -3,7 +3,7 @@ import { GraduationCap, Briefcase, Award, CheckCircle2, Terminal, Sparkles, MapP
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 relative select-none">
+    <section id="about" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">

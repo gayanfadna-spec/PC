@@ -11,7 +11,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden select-none"
+      className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden"
     >
       {/* Background Gradients & Glow Circles */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
